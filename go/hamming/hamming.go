@@ -19,7 +19,6 @@ func checkDifference(a, b string) int {
 		if a[i] != b[i] {
 			difference++
 		}
-		// fmt.Printf("The characrer %c is at position %d", char, pos)
 	}
 
 	return difference
