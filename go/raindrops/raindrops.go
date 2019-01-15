@@ -1,20 +1,6 @@
 package raindrops
 
-import (
-	"strconv"
-	"strings"
-)
-
-type factor struct {
-	number int
-	string string
-}
-
-var factors = []factor{
-	factor{3, "Pling"},
-	factor{5, "Plang"},
-	factor{7, "Plong"},
-}
+import "strconv"
 
 // Convert takes an integer and returns a string depending on which factors the numbers have
 // if the number has 3 as a factor, output "Pling"
@@ -22,23 +8,23 @@ var factors = []factor{
 // if the number has 7 as a factor, output "Plong"
 // if the number does not have any of the numbers as a factor, it gets passed through as a string
 func Convert(number int) string {
-	var stringBuilder strings.Builder
+	resultString := ""
 
-	for _, factor := range factors {
-		stringBuilder.WriteString(checkFactor(number, factor.number, factor.string))
+	if number%3 == 0 {
+		resultString += "Pling"
 	}
 
-	if stringBuilder.String() == "" {
+	if number%5 == 0 {
+		resultString += "Plang"
+	}
+
+	if number%7 == 0 {
+		resultString += "Plong"
+	}
+
+	if resultString == "" {
 		return strconv.Itoa(number)
 	}
 
-	return stringBuilder.String()
-}
-
-func checkFactor(number int, factor int, returnString string) string {
-	if number%factor == 0 {
-		return returnString
-	}
-
-	return ""
+	return resultString
 }
