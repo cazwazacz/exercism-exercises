@@ -6,7 +6,7 @@ import (
 
 // IsIsogram takes a word and returns whether or not it is an isogram
 func IsIsogram(word string) bool {
-	record := make(map[rune]int)
+	record := make(map[rune]bool)
 
 	for _, character := range word {
 		if character == '-' || character == ' ' {
@@ -15,11 +15,11 @@ func IsIsogram(word string) bool {
 
 		character = unicode.ToLower(character)
 
-		if record[character] > 0 {
+		if record[character] {
 			return false
 		}
 
-		record[character] = 1
+		record[character] = true
 	}
 
 	return true
