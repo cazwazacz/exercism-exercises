@@ -4,10 +4,10 @@ import (
 	"unicode"
 )
 
-var record = make(map[rune]int)
-
 // IsIsogram takes a word and returns whether or not it is an isogram
 func IsIsogram(word string) bool {
+	record := make(map[rune]int)
+
 	for _, character := range word {
 		if character == '-' || character == ' ' {
 			continue
